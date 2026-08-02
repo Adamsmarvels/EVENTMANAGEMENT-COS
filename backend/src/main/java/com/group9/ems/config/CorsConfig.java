@@ -18,8 +18,8 @@ public class CorsConfig {
                         "http://localhost:5173",
                         "https://celeris-frontend-eosin.vercel.app"
     )
-    .allowedMethods("GET","POST","PUT","DELETE","OPTIONS")
-                        .allowedHeaders("*");
+      .allowedMethods("GET","POST","PUT","DELETE","OPTIONS")
+    .allowedHeaders("*");
             }
         };
     }
