@@ -5,11 +5,11 @@ WORKDIR /app
 # Copy the Maven wrapper + pom first (better build caching)
 COPY .mvn/ .mvn/
 COPY mvnw pom.xml ./
-RUN ./mvnw dependency:go-offline -B || true
+RUN chmod +x mvnw && ./mvnw dependency:go-offline -B || true
 
 # Copy the source and build the jar (skip tests for a fast deploy)
 COPY src ./src
-RUN ./mvnw clean package -DskipTests -B
+RUN chmod +x mvnw && ./mvnw clean package -DskipTests -B
 
 # ---- Stage 2: Run the built jar on a small Java runtime ----
 FROM eclipse-temurin:17-jre
